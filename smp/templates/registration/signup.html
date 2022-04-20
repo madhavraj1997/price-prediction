@@ -1,0 +1,56 @@
+{% extends 'code/main.html' %}
+
+{% block content %} 
+
+    <h2>Sign Up</h2>
+    <form method="post">
+        {% csrf_token %}
+        {% comment %} {{ form.as_p }} {% endcomment %}
+       
+            <div class="row mb-2">
+              <label for="inputUsername3" class="col-sm-2 col-form-label">Username:</label>
+              <div class="col-sm-3">
+                <input type="name" class="form-control">
+              </div>
+            </div>
+            <div class="row mb-2">
+              <label for="inputFirstname3" class="col-sm-2 col-form-label">Firstname:</label>
+              <div class="col-sm-3">
+                <input type="name" class="form-control">
+              </div>
+            </div>
+
+            <div class="row mb-2">
+                <label for="inputLast3" class="col-sm-2 col-form-label">Lastname:</label>
+                <div class="col-sm-3">
+                  <input type="name" class="form-control">
+                </div>
+              </div>
+
+              <div class="row mb-2">
+                <label for="inputEmail3" class="col-sm-2 col-form-label">Email:</label>
+                <div class="col-sm-3">
+                  <input type="email" class="form-control">
+                </div>
+              </div>
+              <div class="row mb-2">
+                <label for="inputPassword3" class="col-sm-2 col-form-label">Password:</label>
+                <div class="col-sm-3">
+                  <input type="password" class="form-control">
+                </div>
+              </div>
+
+              <div class="row mb-2">
+                <label for="inputPassword3" class="col-sm-2 col-form-label">Password confirmation:</label>
+                <div class="col-sm-3">
+                  <input type="password" class="form-control">
+                </div>
+              </div>
+            
+            
+            <button type="submit" class="btn btn-primary""{% url 'home' %}">Register</button>
+        
+        <br><br>
+        
+    </form>
+{% endblock content %}
