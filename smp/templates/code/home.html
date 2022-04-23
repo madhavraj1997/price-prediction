@@ -113,29 +113,30 @@
         </div>
         <div class="col-1"></div>
         <div class="col-4 ">
-            <div class="">
+            <form method="POST" action="">
+                {% csrf_token %}
                 <div class="row d-flex justify-content-center">
                     <div class="col-12">
                         <div class="card px-5 py-5"
                             style="background: rgb(216, 209, 209); box-shadow: 5px 10px 18px #888888;" id="form1">
                             <div class="form-data" v-if="!submitted">
-                                <div class="forms-inputs mb-4"> <span>Email or username</span> <input autocomplete="off"
-                                        type="text" v-model="email"
+                                <div class="forms-inputs mb-4"> <span>Username</span> <input autocomplete="off"
+                                        type="text" name="uname" v-model="email"
                                         v-bind:class="{'form-control':true, 'is-invalid' : !validEmail(email) && emailBlured}"
                                         v-on:blur="emailBlured = true">
-                                    <div class="invalid-feedback">A valid email is required!</div>
+                                    <div class="invalid-feedback">A valid Username is required!</div>
                                 </div>
                                 <div class="forms-inputs mb-4"> <span>Password</span> <input autocomplete="off"
-                                        type="password" v-model="password"
+                                        type="password" name="pass" v-model="password"
                                         v-bind:class="{'form-control':true, 'is-invalid' : !validPassword(password) && passwordBlured}"
                                         v-on:blur="passwordBlured = true">
                                     <div class="invalid-feedback">Password must be 8 character!</div>
                                 </div>
-                                <div class="mb-3"> <button v-on:click.stop.prevent="submit"
+                                <div class="mb-3"><button v-on:click.stop.prevent="submit"
                                         class="btn btn-dark w-100">Login</button> </div>
                                         <div class="row">
                                             <div class="col-12 d-flex justify-content-end text-right">
-                                                <a href="{% url 'password_reset_form.html' %}" class="link-info">forget password</a>
+                                                <a href="{% url 'password_reset' %}" class="link-info">forget password</a>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -149,7 +150,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
 </section>

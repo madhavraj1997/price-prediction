@@ -1,13 +1,14 @@
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
-# from platformdirs import user_data_path
+from django.forms import ModelForm
 
 # Sign Up Form
-class SignUpForm(UserCreationForm):
+class CreateUserForm(UserCreationForm):
     first_name = forms.CharField(max_length=30, required=False, help_text='Optional')
     last_name = forms.CharField(max_length=30, required=False, help_text='Optional')
     email = forms.EmailField(max_length=254, help_text='Enter a valid email address')
+
 
     class Meta:
         model = User
@@ -20,7 +21,7 @@ class SignUpForm(UserCreationForm):
             'password2', 
             ]
     def save(self, commit=True):
-        user = super(SignUpForm, self).save(commit=False)
+        user = super(CreateUserForm, self).save(commit=False)
         user.email = self.cleaned_data['email']
         if commit:
             user.save()
