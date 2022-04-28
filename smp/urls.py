@@ -11,8 +11,9 @@ urlpatterns = [
     path('watchlist/', views.watchlist, name ="watchlist"),
     path('price_prediction/', views.price_prediction, name ="price_prediction"),
     path('signup/', views.signup, name="signup"),
-    path('logout/', views.logoutuser, name="logout"),
-    path('accounts/', include('django.contrib.auth.urls')),
+    path('/logout/', views.logoutuser, name="logout"),
+    path('stockform/', views.Stockform, name="stockform"),
+    # path('accounts/', include('django.contrib.auth.urls')),
 
 
 

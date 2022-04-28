@@ -1,7 +1,7 @@
 
 from django.core.paginator import Paginator
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate, login,logout
 from django.contrib.auth.forms import UserCreationForm
 from .forms import CreateUserForm
 from django.contrib import messages
@@ -13,8 +13,8 @@ from django.contrib.auth.decorators import login_required
 def home(request):
     # model = Item
     paginate_by = 2
-    # return render(request, 'code/home.html')
-# def loginpage(request):
+
+
     if request.method == "POST":
         username = request.POST.get('uname')
         password = request.POST.get('pass')
@@ -23,10 +23,11 @@ def home(request):
 
         if user is not None:
             login(request, user)
-            return redirect('portfolio')
+            messages.success(request, 'you are successfully loged in.')
+            return redirect('home')
         else:
             messages.info(request, 'Username OR Password is incorrect')
-            # return render(request, 'code/home.html')
+        
 
     return render(request, 'code/home.html')
     
@@ -64,4 +65,11 @@ def signup(request):
 
 def logoutuser(request):
     logout(request)
+    messages.warning(request, 'you are successfully loged out.')
+
     return redirect('home')
+
+def Stockform(request):
+    context = {}
+    return render(request, 'portfolio/stockform.html', context)
+
