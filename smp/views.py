@@ -6,6 +6,7 @@ from django.contrib.auth.forms import UserCreationForm
 from .forms import CreateUserForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from .models import Portfolio
 
 
 
@@ -72,4 +73,21 @@ def logoutuser(request):
 def Stockform(request):
     context = {}
     return render(request, 'portfolio/stockform.html', context)
+
+
+def add_stock(request):
+    return render(request, 'portfolio/add_stock.html')
+
+def add_portfolio(request):
+    if request.method == 'POST':
+        stock = request.POST.get('stock')
+        kitta = request.POST.get('kitta')
+
+        portfolio = Portfolio.objects.create(stock_name=stock, kitta=kitta)
+        portfolio.save()
+
+        return redirect('portfolio')
+    
+    return redirect('portfolio')
+
 
