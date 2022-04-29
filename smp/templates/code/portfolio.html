@@ -5,8 +5,8 @@
   
 
     .button {
-      position: absolute;
-      right: 20%;
+      position: fixed;
+      right: 7%;
       bottom: 10%;
       
       padding: 15px 25px;
@@ -30,10 +30,133 @@
       transform: translateY(4px);
     }
     </style>
-      {% include 'portfolio/stockfill.html' %}
-      
-      <a href="{% url 'add_stock' %}"> <button class="button">Add Stock</button></a>
-   
+      <section style="margin-top: 4rem; width: 100% !important;">
+        <div class="row">
+            <div class="card col-3 m-2 bg-secondary">
+                <div class="card-header bg-info">
+                    <div class="row">
+                        <div class="col-6">JBLB</div>
+                        <div class="col-6">LTP: 2045</div>
+                    </div>
+                </div>
+                <div class="card-body bg-success">
+                    <div class="row">
+                        <div class="col-4">Current Units: 10</div>
+                        <div class="col-4"> Sold unit: 0</div>
+                        <div class="col-4">Investment: rs 1000</div>
+                        <div class="col-4">Estimated Profit</div>
+                        <div class="col-4">Current Value</div>
+                    </div>
+                </div>
+                <div class="card-footer text-muted bg-info">
+                    <div class="row">
+                        <div class="col-6">Receivable Amount: RS 27,000</div>
+                        <div class="col-6">Profit: 2667%</div>
+                    </div>
+                </div>
+            </div>
+            <div class="card col-3 m-2">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-6">JBLB</div>
+                        <div class="col-6">LTP: 2045</div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-4">Current Units: 10</div>
+                        <div class="col-4"> Sold unit: 0</div>
+                        <div class="col-4">Investment: rs 1000</div>
+                        <div class="col-4">Estimated Profit</div>
+                        <div class="col-4">Current Value</div>
+                    </div>
+                </div>
+                <div class="card-footer text-muted">
+                    <div class="row">
+                        <div class="col-6">Receivable Amount: RS 27,000</div>
+                        <div class="col-6">Profit: 2667%</div>
+                    </div>
+                </div>
+            </div>
+            <div class="card col-3 m-2">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-6">JBLB</div>
+                        <div class="col-6">LTP: 2045</div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-4">Current Units: 10</div>
+                        <div class="col-4"> Sold unit: 0</div>
+                        <div class="col-4">Investment: rs 1000</div>
+                        <div class="col-4">Estimated Profit</div>
+                        <div class="col-4">Current Value</div>
+                    </div>
+                </div>
+                <div class="card-footer text-muted">
+                    <div class="row">
+                        <div class="col-6">Receivable Amount: RS 27,000</div>
+                        <div class="col-6">Profit: 2667%</div>
+                    </div>
+                </div>
+            </div>
+            <div class="card col-3 m-2">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-6">JBLB</div>
+                        <div class="col-6">LTP: 2045</div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-4">Current Units: 10</div>
+                        <div class="col-4"> Sold unit: 0</div>
+                        <div class="col-4">Investment: rs 1000</div>
+                        <div class="col-4">Estimated Profit</div>
+                        <div class="col-4">Current Value</div>
+                    </div>
+                </div>
+                <div class="card-footer text-muted">
+                    <div class="row">
+                        <div class="col-6">Receivable Amount: RS 27,000</div>
+                        <div class="col-6">Profit: 2667%</div>
+                    </div>
+                </div>
+            </div>
+            <div class="card col-3 m-2">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-6">JBLB</div>
+                        <div class="col-6">LTP: 2045</div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-4">Current Units: 10</div>
+                        <div class="col-4"> Sold unit: 0</div>
+                        <div class="col-4">Investment: rs 1000</div>
+                        <div class="col-4">Estimated Profit</div>
+                        <div class="col-4">Current Value</div>
+                    </div>
+                </div>
+                <div class="card-footer text-muted">
+                    <div class="row">
+                        <div class="col-6">Receivable Amount: RS 27,000</div>
+                        <div class="col-6">Profit: 2667%</div>
+                    </div>
+                </div>
+            </div>
+            
+            
+        </div>
+        <div class="row">
+          <div class="col">
+              <a href="{% url 'add_stock' %}"> <button class="button">Add Stock</button></a>
+            </div>
+          </div>
+    </section>
+     
 
 x
 {% endblock content %}
