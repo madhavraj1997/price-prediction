@@ -7,15 +7,22 @@ from .forms import CreateUserForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .models import Portfolio
-
-
+import numpy as np
+import pandas as pd
+from django.core.paginator import Paginator
 
 # Create your views here.
 def home(request):
     # model = Item
-    paginate_by = 2
+    
+
+    # csv_working
+    df = pd.read_csv('smp/csv/todaysstock.csv') 
+    
+    print(df)
 
 
+# loginpage
     if request.method == "POST":
         username = request.POST.get('uname')
         password = request.POST.get('pass')
@@ -30,7 +37,7 @@ def home(request):
             messages.info(request, 'Username OR Password is incorrect')
         
 
-    return render(request, 'code/home.html')
+    return render(request, 'code/home.html', {'stocks': df})
     
 @login_required
 def portfolio(request):
@@ -90,4 +97,5 @@ def add_portfolio(request):
     
     return redirect('portfolio')
 
+    
 

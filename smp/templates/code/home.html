@@ -2,241 +2,107 @@
 {% load static %}
 <style></style>
 {% block content %}
-    {% if messages %}
-        <ul class="messages">
-            {% for message in messages %}
-                <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-            {% endfor %}
-        </ul>
-    {% endif %}
-    <section style="margin-top: 6rem;">
-        <div class="row">
-            <div class="{% if user.is_authenticated %}col-12{% else %}col-7{% endif %}">
-                <div class="card">
-                    <div class="card-header">Today's Stock</div>
-                    <div class="card-body">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th scope="col">SN</th>
-                                    <th scope="col">Company_Name</th>
-                                    <th scope="col">High_Price</th>
-                                    <th scope="col">Low_Price</th>
-                                    <th scope="col">Volume</th>
-                                    <th scope="col">Prev._Closing</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
-                                    <td>@mdo</td>
-                                    <td>@mdo</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>Jacob</td>
-                                    <td>Thornton</td>
-                                    <td>@fat</td>
-                                    <td>@fat</td>
-                                    <td>@fat</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">3</th>
-                                    <td>Larry</td>
-                                    <td>the Bird</td>
-                                    <td>@twitter</td>
-                                    <td>@twitter</td>
-                                    <td>
-                                        @twitter
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">
-                                        4
-                                    </th>
-                                    <td>
-                                        Larry
-                                    </td>
-                                    <td>
-                                        the Bird
-                                    </td>
-                                    <td>
-                                        @twitter
-                                    </td>
-                                    <td>
-                                        @twitter
-                                    </td>
-                                    <td>
-                                        @twitter
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">
-                                        5
-                                    </th>
-                                    <td>
-                                        Larry
-                                    </td>
-                                    <td>
-                                        the Bird
-                                    </td>
-                                    <td>
-                                        @twitter
-                                    </td>
-                                    <td>
-                                        @twitter
-                                    </td>
-                                    <td>
-                                        @twitter
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">
-                                        6
-                                    </th>
-                                    <td>
-                                        Larry
-                                    </td>
-                                    <td>
-                                        the Bird
-                                    </td>
-                                    <td>
-                                        @twitter
-                                    </td>
-                                    <td>
-                                        @twitter
-                                    </td>
-                                    <td>
-                                        @twitter
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">
-                                        7
-                                    </th>
-                                    <td>
-                                        Larry
-                                    </td>
-                                    <td>
-                                        the Bird
-                                    </td>
-                                    <td>
-                                        @twitter
-                                    </td>
-                                    <td>
-                                        @twitter
-                                    </td>
-                                    <td>
-                                        @twitter
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">
-                                        8
-                                    </th>
-                                    <td>
-                                        Larry
-                                    </td>
-                                    <td>
-                                        the Bird
-                                    </td>
-                                    <td>
-                                        @twitter
-                                    </td>
-                                    <td>
-                                        @twitter
-                                    </td>
-                                    <td>
-                                        @twitter
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">
-                                        9
-                                    </th>
-                                    <td>
-                                        Larry
-                                    </td>
-                                    <td>
-                                        the Bird
-                                    </td>
-                                    <td>
-                                        @twitter
-                                    </td>
-                                    <td>
-                                        @twitter
-                                    </td>
-                                    <td>
-                                        @twitter
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+<section style="margin-top: 6rem;">
+    <div class="row">
+        <div class="{% if user.is_authenticated %}col-12{% else %}col-8{% endif %}">
+            <div class="card">
+                <div class="card-header">Today's Stock</div>
+                <div class="card-body">
+                    <table class="table">
+                        <thead>
+                            
+
+                            <tr>
+                                <th scope="col">SN</th>
+                                <th scope="col">Company_Name</th>
+                                <th scope="col">High_Price</th>
+                                <th scope="col">Low_Price</th>
+                                <th>Todays Closing</th>
+                                <th scope="col">Prev._Closing</th>
+                                <th scope="col">Volume</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for index, stock in stocks.iterrows %}
+                            <tr>
+                                <td>{{ forloop.counter }}</td>
+                                {% for cell in stock %}
+                              
+                                <td>
+                                    {{cell}}
+                                </td>  
+                                {% endfor %}
+                                {% comment %} <td>{{ forloop.counter }}</td>
+                                <td>{{ stock.1 }}</td>
+                                <td>{{ stock.5 }}</td>
+                                <td>{{ stock.2 }}</td>
+                                <td>{{ stock.3 }}</td>
+                                <td>{{ stock.4 }}</td> {% endcomment %}
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
                 </div>
             </div>
-            <div class="col-1">
-            </div>
-            {% if not user.is_authenticated %}
-                <div class="col-4 ">
-                    <form method="POST" action="">
-                        {% csrf_token %}
-                        <div class="row d-flex justify-content-center">
-                            <div class="col-12">
-                                <div class="card px-5 py-5"
-                                     style="background: rgb(216, 209, 209);
-                                            box-shadow: 5px 10px 18px #888888;"
-                                     id="form1">
-                                    <div class="form-data" v-if="!submitted">
-                                        <div class="forms-inputs mb-4">
-                                            <span>Username</span>
-                                            <input autocomplete="off"
-                                                   type="text"
-                                                   name="uname"
-                                                   v-model="email"
-                                                   v-bind:class="{'form-control':true, 'is-invalid' : !validEmail(email) && emailBlured}"
-                                                   v-on:blur="emailBlured = true">
-                                            <div class="invalid-feedback">
-                                                A valid Username is required!
-                                            </div>
-                                        </div>
-                                        <div class="forms-inputs mb-4">
-                                            <span>Password</span>
-                                            <input autocomplete="off"
-                                                   type="password"
-                                                   name="pass"
-                                                   v-model="password"
-                                                   v-bind:class="{'form-control':true, 'is-invalid' : !validPassword(password) && passwordBlured}"
-                                                   v-on:blur="passwordBlured = true">
-                                            <div class="invalid-feedback">
-                                                Password must be 8 character!
-                                            </div>
-                                        </div>
-                                        <div class="mb-3">
-                                            <button v-on:click.stop.prevent="submit" class="btn btn-dark w-100">
-                                                Login
-                                            </button>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-12 d-flex justify-content-center text-right">
-                                                <a href="{% url 'password_reset' %}" class="link-info text-dark text-decoration-none">forget password</a>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-12 d-flex justify-content-center text-left" >
-                                                <a href="{% url 'signup' %}" class="link-info text-dark text-decoration-none">SignUp</a>
-                                            </div>
-                                        </div>
+        </div>
+        {% if not user.is_authenticated %}
+        <div class="col-4 ">
+            <form method="POST" action="">
+                {% csrf_token %}
+                <div class="row d-flex justify-content-center">
+                    <div class="col-12">
+                        <div class="card px-5 py-5" style="background: rgb(216, 209, 209);
+                                            box-shadow: 5px 10px 18px #888888;" id="form1">
+                            <div class="form-data" v-if="!submitted">
+                                <div class="forms-inputs mb-4">
+                                    <span>Username</span>
+                                    <input autocomplete="off" type="text" name="uname" v-model="email"
+                                        v-bind:class="{'form-control':true, 'is-invalid' : !validEmail(email) && emailBlured}"
+                                        v-on:blur="emailBlured = true">
+                                    <div class="invalid-feedback">
+                                        A valid Username is required!
+                                    </div>
+                                </div>
+                                <div class="forms-inputs mb-4">
+                                    <span>Password</span>
+                                    <input autocomplete="off" type="password" name="pass" v-model="password"
+                                        v-bind:class="{'form-control':true, 'is-invalid' : !validPassword(password) && passwordBlured}"
+                                        v-on:blur="passwordBlured = true">
+                                    <div class="invalid-feedback">
+                                        Password must be 8 character!
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <button v-on:click.stop.prevent="submit" class="btn btn-dark w-100">
+                                        Login
+                                    </button>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 d-flex justify-content-center text-right">
+                                        <a href="{% url 'password_reset' %}"
+                                            class="link-info text-dark text-decoration-none">forget password</a>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 d-flex justify-content-center text-left">
+                                        <a href="{% url 'signup' %}"
+                                            class="link-info text-dark text-decoration-none">SignUp</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </form>
+                    </div>
                 </div>
-            {% endif %}
+            </form>
         </div>
-    </section>
+        {% endif %}
+    </div>
+</section>
 {% endblock content %}
