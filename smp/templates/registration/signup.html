@@ -1,0 +1,19 @@
+{% extends 'code/main.html' %}
+
+{% block content %} 
+
+    <h2>Sign Up</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+       
+            {% comment %} <a href="{% url 'home' %}"> {% endcomment %}
+            
+            <button type="submit" class="btn btn-primary">Create User</button>
+            {% comment %} </a> {% endcomment %}
+        
+        <br><br>
+        
+    </form>
+    {{ form.errors }}
+{% endblock content %}

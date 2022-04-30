@@ -1,0 +1,36 @@
+{% load static %}
+{% block content %}
+<section style="margin-top: 4rem;">
+    <div class="row">
+        {% for portfolio in portfolios %}
+        {% for d in df %}
+            {% if portfolio.stock_name == d.0 %}
+
+        <div class="card col-3 m-2">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-6">{{d.0}}</div>
+                    <div class="col-6">{{d.3}}</div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-4">Current Units: {{portfolio.kitta}}</div>
+                    <div class="col-4">Investment: calculating...</div>
+                    <div class="col-4">Estimated Profit: calculating...</div>
+                    <div class="col-4">Current Value: calculating...</div>
+                </div>
+            </div>
+            <div class="card-footer text-muted">
+                <div class="row">
+                    <div class="col-6">Receivable Amount: calculating...</div>
+                    <div class="col-6">Profit: calculating...</div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+        {% endfor %}
+    </div>
+</section>
+{% endblock content %}
