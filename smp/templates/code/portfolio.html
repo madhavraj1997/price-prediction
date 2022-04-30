@@ -5,8 +5,8 @@
   
 
     .button {
-      position: absolute;
-      right: 20%;
+      position: fixed;
+      right: 10%;
       bottom: 10%;
       
       padding: 15px 25px;
@@ -29,11 +29,10 @@
       box-shadow: 0 5px #666;
       transform: translateY(4px);
     }
-    </style>
+</style>
       {% include 'portfolio/stockfill.html' %}
       
       <a href="{% url 'add_stock' %}"> <button class="button">Add Stock</button></a>
    
 
-x
 {% endblock content %}
