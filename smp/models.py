@@ -29,17 +29,11 @@ class Portfolio(models.Model):
 
 
 
-# class Watchlist(models.Model):
-#     serial_number = models.IntegerField()
-#     company_name = models.CharField(max_length=100)
-#     high_price = models.FloatField()
-#     low_price = models.FloatField()
-#     volume = models.FloatField()
-#     prev_closing = models.FloatField()
+class Watchlist(models.Model):
+    stock_name = models.CharField(max_length=100, null=True, blank=True)
 
-
-#     def __str__(self):
-#         return self.serial_number
+    def __str__(self):
+        return self.stock_name
 
 
 

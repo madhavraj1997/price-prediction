@@ -7,11 +7,12 @@
       <label for="stock">Select Stock</label>
       <select class="form-control" id="stock" name="stock">
         <option value="">---Select Stock---</option>
-        <option value="nic">nic</option>
-        <option value="himalaya">himalaya</option>
-        <option value="nabil">nabil</option>
-        <option value="bok">bok</option>
-        <option value="adb">adb</option>
+        {% for stocks in dataframe %}
+          {% for s in stocks %}
+        <option value="{{s}}">{{ s }}</option>
+        {% endfor %}
+        {% endfor %}
+       
       </select>
     </div>
     <div class="form-group">

@@ -25,26 +25,17 @@
                                 <th scope="col">High_Price</th>
                                 <th scope="col">Low_Price</th>
                                 <th>Todays Closing</th>
-                                <th scope="col">Prev._Closing</th>
                                 <th scope="col">Volume</th>
+                                <th scope="col">Previous close </th>
                             </tr>
                         </thead>
                         <tbody>
-                            {% for index, stock in stocks.iterrows %}
+                            {% for stock in stocks %}
                             <tr>
                                 <td>{{ forloop.counter }}</td>
-                                {% for cell in stock %}
-                              
-                                <td>
-                                    {{cell}}
-                                </td>  
+                                {% for s in stock %}
+                                <td>{{ s }}</td>
                                 {% endfor %}
-                                {% comment %} <td>{{ forloop.counter }}</td>
-                                <td>{{ stock.1 }}</td>
-                                <td>{{ stock.5 }}</td>
-                                <td>{{ stock.2 }}</td>
-                                <td>{{ stock.3 }}</td>
-                                <td>{{ stock.4 }}</td> {% endcomment %}
                             </tr>
                             {% endfor %}
                         </tbody>

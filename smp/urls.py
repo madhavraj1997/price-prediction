@@ -15,6 +15,8 @@ urlpatterns = [
     path('stockform/', views.Stockform, name="stockform"),
     path('add-stock/', views.add_stock, name="add_stock"),
     path('add-portfolio/', views.add_portfolio, name="add_portfolio"),
+    path('add-watchlist/', views.add_watchlist, name="add_watchlist"),
+
     # path('accounts/', include('django.contrib.auth.urls')),
 
 

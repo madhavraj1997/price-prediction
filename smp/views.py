@@ -6,7 +6,9 @@ from django.contrib.auth.forms import UserCreationForm
 from .forms import CreateUserForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from .models import Portfolio
+from .models import Portfolio, Watchlist
+from smp.livedata import stocks
+from smp.company_name import stock_name
 import numpy as np
 import pandas as pd
 from django.core.paginator import Paginator
@@ -17,7 +19,8 @@ def home(request):
     
 
     # csv_working
-    df = pd.read_csv('smp/csv/todaysstock.csv') 
+    #df = pd.read_csv('smp/csv/todaysstock.csv') 
+    df = stocks()
     
     print(df)
 
@@ -41,7 +44,10 @@ def home(request):
     
 @login_required
 def portfolio(request):
-    context={}
+    portfolios = Portfolio.objects.all()
+    df = stocks()
+    print(type(df))
+    context={'portfolios': portfolios, 'df': df}
     return render(request, 'code/portfolio.html', context)
 @login_required
 def price_prediction(request):
@@ -51,6 +57,8 @@ def price_prediction(request):
 def watchlist(request):
     context = {}
     return render(request, 'code/watchlist.html', {})
+
+    #signup
 def signup(request):
     form = CreateUserForm()
    
@@ -70,7 +78,7 @@ def signup(request):
     context = {'form':form}
     return render(request, 'registration/signup.html', context)
 
-
+#logout
 def logoutuser(request):
     logout(request)
     messages.warning(request, 'you are successfully loged out.')
@@ -83,7 +91,9 @@ def Stockform(request):
 
 
 def add_stock(request):
-    return render(request, 'portfolio/add_stock.html')
+    dataframe = stock_name()
+    print(dataframe)    
+    return render(request, 'portfolio/add_stock.html', {'dataframe':dataframe})
 
 def add_portfolio(request):
     if request.method == 'POST':
@@ -97,5 +107,19 @@ def add_portfolio(request):
     
     return redirect('portfolio')
 
-    
+#views for watchlist
+
+def add_watchlist(request):
+    if request.method == 'POST':
+        stock_name = request.POST.get('stock_name')
+
+        watchlist = Watchlist.objects.create(stock_name=stock_name)
+
+
+        watchlist.save()
+        return redirect('watchlist')
+
+
+    return render(request, 'code/watchlist_form.html')
+
 
